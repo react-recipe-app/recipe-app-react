@@ -15,7 +15,7 @@ function App() {
           <Grid item xs={3}>
             <CheckListMenu />
           </Grid>
-          <Grid column item xs={9}>
+          <Grid item xs={9}>
             <Main />
           </Grid>
         </Grid>

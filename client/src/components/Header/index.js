@@ -7,6 +7,7 @@ import {
   Link,
   Container,
 } from "@material-ui/core";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,9 @@ const useStyles = makeStyles((theme) => ({
     background: "#f5d44f",
     fontWeight: "700",
   },
+  input: {
+    color: "white",
+  },
 }));
 
 function Header() {
@@ -41,6 +45,13 @@ function Header() {
   return (
     <AppBar position="static" className={classes.appBar}>
       <Toolbar>
+        <TextField
+          className={classes.input}
+          style={{ color: "white" }}
+          id="outlined-basic"
+          label="Outlined"
+          variant="outlined"
+        />
         <Typography variant="div" className={classes.title}>
           <Link href="#" onClick={preventDefault} className={classes.logo}>
             Ne var ki acaba?
