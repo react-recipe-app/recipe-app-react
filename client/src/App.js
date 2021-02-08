@@ -4,6 +4,7 @@ import CheckListMenu from "./components/CheckListMenu";
 import "./App.css";
 
 import { Grid, Container } from "@material-ui/core";
+import SearchBar from "./components/SearchBar";
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,9 @@ function App() {
           </Grid>
           <Grid item xs={9}>
             <Main />
+          </Grid>
+          <Grid item xs={4}>
+            <SearchBar/>
           </Grid>
         </Grid>
       </Container>
