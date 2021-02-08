@@ -1,7 +1,7 @@
 import React from "react";
 
 function CheckListMenu() {
-  return <div>ChecklistMenu components</div>;
+  return <div>Sidebar</div>;
 }
 
 export default CheckListMenu;
