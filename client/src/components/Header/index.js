@@ -13,8 +13,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appBar: {
-    backgroundColor: "transparent",
-    marginTop: "20px",
+    backgroundColor: "rgba(57, 57, 59, 0.1)",
+    marginTop: "50px",
   },
   title: {
     flexGrow: 1,
@@ -39,23 +39,21 @@ function Header() {
   const classes = useStyles();
   const preventDefault = (event) => event.preventDefault();
   return (
-    <Container>
-      <AppBar position="static" className={classes.appBar}>
-        <Toolbar>
-          <Typography variant="div" className={classes.title}>
-            <Link href="#" onClick={preventDefault} className={classes.logo}>
-              Ne var ki acaba?
-            </Link>
-          </Typography>
-          <Button variant="outlined" className={classes.btn}>
-            Login
-          </Button>
-          <Button variant="outlined" className={classes.btn}>
-            Sign ın
-          </Button>
-        </Toolbar>
-      </AppBar>
-    </Container>
+    <AppBar position="static" className={classes.appBar}>
+      <Toolbar>
+        <Typography variant="div" className={classes.title}>
+          <Link href="#" onClick={preventDefault} className={classes.logo}>
+            Ne var ki acaba?
+          </Link>
+        </Typography>
+        <Button variant="outlined" className={classes.btn}>
+          Login
+        </Button>
+        <Button variant="outlined" className={classes.btn}>
+          Sign ın
+        </Button>
+      </Toolbar>
+    </AppBar>
   );
 }
 
