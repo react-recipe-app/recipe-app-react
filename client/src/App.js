@@ -1,3 +1,4 @@
+import NavBar from "./components/NavBar";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import CheckListMenu from "./components/CheckListMenu";
@@ -8,7 +9,10 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Grid item container xs={12}>
+        <Grid container xs={12} spacing={4}>
+          <Grid item xs={12}>
+            <NavBar />
+          </Grid>
           <Grid item xs={12}>
             <Header />
           </Grid>

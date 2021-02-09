@@ -1,107 +1,60 @@
-import { useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import Checkbox from "@material-ui/core/Checkbox";
-import Favorite from "@material-ui/icons/Favorite";
-import FavoriteBorder from "@material-ui/icons/FavoriteBorder";
-import CheckBoxIcon from "@material-ui/icons/CheckBox";
+import React from "react";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Divider from "@material-ui/core/Divider";
+import InboxIcon from "@material-ui/icons/Inbox";
+import DraftsIcon from "@material-ui/icons/Drafts";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    backgroundColor: "rgba(245, 212, 79, 0.6)",
-    marginTop: "10vh",
-    borderRadius: "20px",
+const theme = createMuiTheme({
+  overrides: {
+    MuiList: {
+      root: {
+        backgroundColor: "rgba(245, 212, 79,0.8)",
+        borderRadius: "15px",
+        color: "#4488d1",
+      },
+    },
+    MuiTypography: {
+      body1: {
+        fontSize: "1.5rem",
+        textAlign: "center",
+      },
+    },
   },
-  formControl: {
-    margin: "10px",
-    height: "auto",
-  },
-}));
+});
 
 function CheckListMenu() {
-  const classes = useStyles();
-  const [state, setState] = useState({});
-
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
-    console.log(state);
+  const handleClick = (e) => {
+    console.log(e.target);
   };
   return (
-    <div className={classes.root}>
-      <FormGroup row className={classes.formControl}>
-        <FormLabel component="legend">Select what you have</FormLabel>
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-        <FormControlLabel
-          control={
-            <Checkbox
-              icon={<FavoriteBorder />}
-              checkedIcon={<Favorite />}
-              name="checkedI"
-              onChange={handleChange}
-            />
-          }
-          label="Custom size"
-        />
-      </FormGroup>
+    <div>
+      <ThemeProvider theme={theme}>
+        <List component="nav" aria-label="main mailbox folders">
+          <ListItem button>
+            <ListItemText onClick={handleClick} primary="Breakfast" />
+          </ListItem>
+          <ListItem button>
+            <ListItemText onClick={handleClick} primary="Breakfast" />
+          </ListItem>
+          <ListItem button>
+            <ListItemText onClick={handleClick} primary="Breakfast" />
+          </ListItem>
+          <ListItem button>
+            <ListItemText onClick={handleClick} primary="Breakfast" />
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Lunch" onClick={handleClick} />
+          </ListItem>
+          <ListItem button>
+            <ListItemText primary="Dinner" onClick={handleClick} />
+          </ListItem>
+        </List>
+        <Divider />
+      </ThemeProvider>
     </div>
   );
 }
