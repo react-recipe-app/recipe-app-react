@@ -1,6 +1,4 @@
 .App {
-  display: flex;
-  flex-direction: column;
 }
 /* @keyframes load {
   0% {
@@ -9,3 +7,6 @@
 }
 animation: load 2s ease-in;
  */
+.main {
+  background-color: rgba(245, 212, 79, 0.7);
+}

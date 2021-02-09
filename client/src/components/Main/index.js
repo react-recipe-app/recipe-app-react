@@ -44,8 +44,8 @@ function Main() {
   };
   return (
     <div>
-      <Grid container>
-        <Grid xs={6}>
+      <Grid container style={{ margin: "50px" }}>
+        <Grid style={{ marginBottom: "50px" }} xs={12} md={5}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -73,7 +73,7 @@ function Main() {
             </CardActions>
           </Card>
         </Grid>
-        <Grid xs={6}>
+        <Grid style={{ marginBottom: "50px" }} xs={12} md={5}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -101,7 +101,7 @@ function Main() {
             </CardActions>
           </Card>
         </Grid>
-        <Grid xs={6}>
+        <Grid style={{ marginBottom: "50px" }} xs={12} md={5}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
@@ -129,7 +129,7 @@ function Main() {
             </CardActions>
           </Card>
         </Grid>
-        <Grid xs={6}>
+        <Grid style={{ marginBottom: "50px" }} xs={12} md={5}>
           <Card className={classes.root}>
             <CardActionArea>
               <CardMedia
