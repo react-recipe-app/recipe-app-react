@@ -8,7 +8,7 @@ import { Grid, Container } from "@material-ui/core";
 import { useEffect } from "react";
 function App() {
   useEffect(() => {
-    getRecipe().then((res) => console.log(res.data));
+    // getRecipe().then((res) => console.log(res.data));
   }, []);
   return (
     <div>
