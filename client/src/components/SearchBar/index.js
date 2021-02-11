@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getRecipe } from "../../serviceWorker";
 import {
   Button,
   TextField,
@@ -18,7 +19,11 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-import { checkboxHealthLabels, checkboxDietLabels } from "./checkboxItems";
+import {
+  checkboxHealthLabels,
+  checkboxDietLabels,
+  checkboxCaloriesLabels,
+} from "./checkboxItems";
 const theme = createMuiTheme({
   overrides: {
     MuiOutlinedInput: {
@@ -103,6 +108,7 @@ function SearchBar() {
   //******* checkbox */
   const [checkedHealth, setCheckedHealth] = useState(checkboxHealthLabels);
   const [checkedDiet, setCheckedDiet] = useState(checkboxDietLabels);
+  const [checkedCalori, setCheckedCalori] = useState(checkboxCaloriesLabels);
 
   // healthlabels
   const handleChangeHealth = ({ target }) => {
@@ -114,6 +120,7 @@ function SearchBar() {
       ...checkedHealth.slice(index + 1),
     ]);
   };
+  // dietlabels
   const handleChangeDiet = ({ target }) => {
     const { name } = target;
     const index = checkedDiet.findIndex((obj) => obj.name === name);
@@ -123,6 +130,37 @@ function SearchBar() {
       ...checkedDiet.slice(index + 1),
     ]);
   };
+
+  //calorilabels
+  //Songül ekledi
+  const handleChangeCalori = ({ target }) => {
+    const { name } = target;
+    const index = checkedCalori.findIndex((obj) => obj.name === name);
+    setCheckedCalori([
+      ...checkedCalori.slice(0, index),
+      { name, checked: target.checked },
+      ...checkedCalori.slice(index + 1),
+    ]);
+  };
+
+  let health = checkedHealth
+    .filter((item) => item.checked)
+    .map((item) => item.name);
+  console.log(health);
+  let diet = checkedDiet
+    .filter((item) => item.checked)
+    .map((item) => item.name);
+  let calori = checkedCalori
+    .filter((item) => item.checked)
+    .map((item) => item.name);
+
+  useEffect(() => {
+    let queryString = "";
+    queryString += `{&health=${health}}`;
+    console.log(queryString);
+  }, [health]);
+
+  //Songül ekledi
   //******* checkbox */
   const [state, setChecked] = useState({
     checkedA: true,
@@ -215,6 +253,7 @@ function SearchBar() {
                           onChange={handleChangeDiet}
                           inputProps={{ "aria-label": "primary checkbox" }}
                           color="primary"
+                          name={item.name}
                         />
                       }
                       label={item.name}
@@ -232,28 +271,19 @@ function SearchBar() {
                 unmountOnExit
               >
                 <FormGroup row>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={state.checkedA}
-                        onChange={handleChange}
-                        name="checkedA"
-                        color="primary"
-                      />
-                    }
-                    label="Secondary"
-                  />
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={state.checkedB}
-                        onChange={handleChange}
-                        name="checkedB"
-                        color="primary"
-                      />
-                    }
-                    label="Banane"
-                  />
+                  {checkboxCaloriesLabels.map((item, i) => (
+                    <FormControlLabel
+                      control={
+                        <Checkbox
+                          checked={checkedCalori.name}
+                          onChange={handleChangeCalori}
+                          name={item.name}
+                          color="primary"
+                        />
+                      }
+                      label={item.name}
+                    />
+                  ))}
                 </FormGroup>
               </Collapse>
             </List>

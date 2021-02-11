@@ -17,3 +17,11 @@ export const checkboxDietLabels = [
   { name: "Low-Fat", checked: false },
   { name: "Low-Sodium", checked: false },
 ];
+
+export const checkboxCaloriesLabels = [
+  { name: "0-100", checked: false },
+  { name: "101-200", checked: false },
+  { name: "201-300", checked: false },
+  { name: "301-400", checked: false },
+  { name: "401-500", checked: false },
+];
