@@ -45,12 +45,12 @@ const useStyles = makeStyles((theme) => ({
 function Recipe() {
   const classes = useStyles();
   return (
-    <Grid xs={2}>
+    <Grid container xs={6}>
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
             className={classes.media}
-            image="https://www.edamam.com/web-img/e42/e42f9119813e890af34c259785ae1cfb.jpg"
+            image="https://www.edamam.com/web-img/7db/7dbdf0a1b2440b46b1113ba4752d7e2d.jpg"
             title="Paella dish"
           />
           <CardHeader

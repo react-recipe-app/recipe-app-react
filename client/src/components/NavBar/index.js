@@ -36,7 +36,7 @@ function Header() {
       <Toolbar>
         <Typography variant="div" className={classes.title}>
           <Link href="#" onClick={preventDefault} className={classes.logo}>
-            Ne var ki acaba?
+            What Do You Want to Cook ?
           </Link>
         </Typography>
         <Button variant="outlined" className={classes.btn}>

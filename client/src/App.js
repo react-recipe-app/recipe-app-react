@@ -6,7 +6,7 @@ import { Grid, Container } from "@material-ui/core";
 import { RecipeProvider } from "./contexts/RecipeContext";
 function App() {
   return (
-    <div>
+    <div className="App">
       <Container>
         <Grid container xs={12} spacing={4}>
           <Grid item xs={12}>

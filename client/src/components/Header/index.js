@@ -30,9 +30,7 @@ function Header() {
               align="center"
               color="primary"
             >
-              Another free template by Colorlib. Far far away, behind the word
-              mountains, far from the countries Vokalia and Consonantia, there
-              live the blind texts.
+              Find recipes using ingredients you already have in the kitchen!
             </Typography>
           </Grid>
           <Grid item xs={2}></Grid>

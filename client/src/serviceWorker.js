@@ -10,7 +10,7 @@ export const getRecipe = (
   ingredients
 ) => {
   const data = axios.get(
-    `https://api.edamam.com/search?app_id=${appID}&app_key=${appKey}&from=0&to=10&calories=${caloriValues}&Health=${healthValues}&Diet=${dietValues}&q=${ingredients}`
+    `https://api.edamam.com/search?app_id=${appID}&app_key=${appKey}&from=0&to=12&calories=${caloriValues}&Health=${healthValues}&Diet=${dietValues}&q=${ingredients}`
   );
   return data;
 };

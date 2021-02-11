@@ -47,7 +47,6 @@ function SearchBar() {
   const handleClose = () => {
     setOpen(false);
     setIngredients("");
-    console.log("selamaşar");
   };
   const handleClickOpen = () => {
     setOpen(true);
