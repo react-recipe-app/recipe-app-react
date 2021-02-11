@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { RecipeContext } from "../../contexts/RecipeContext";
+import RecipeContext from "../../contexts/RecipeContext";
 import { getRecipe } from "../../serviceWorker";
 import {
   Button,
@@ -129,7 +129,7 @@ function SearchBar() {
         dietValues,
         caloriValue,
         ingredients
-      ).then((res) => setRecipes(res.data));
+      ).then((res) => setRecipes(res.data.hits));
     }
   };
   return (

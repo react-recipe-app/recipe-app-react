@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Recipe from "../Recipe";
-import RecipeContext from "../../contexts";
+import RecipeContext from "../../contexts/RecipeContext";
 function Main() {
   const { recipes } = useContext(RecipeContext);
   return (
