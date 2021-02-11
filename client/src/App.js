@@ -24,9 +24,6 @@ function App() {
           <Grid item xs={12}>
             <Main />
           </Grid>
-          <Grid item xs={4}>
-            <SearchBar/>
-          </Grid>
         </Grid>
       </RecipeProvider>
     </div>
