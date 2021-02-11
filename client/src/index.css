@@ -5,8 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url(./assests/pexels-valeria-boltneva-842571.jpg) no-repeat center
-    center fixed;
+  background: url("./assests/pexels-valeria-boltneva-842571.jpg") no-repeat
+    center center fixed;
   background-size: cover;
 }
 

@@ -1,7 +1,11 @@
 import React from "react";
-
+import RecipeList from "../RecipeList";
 function Main() {
-  return <div>Main components</div>;
+  return (
+    <>
+      <RecipeList />
+    </>
+  );
 }
 
 export default Main;
