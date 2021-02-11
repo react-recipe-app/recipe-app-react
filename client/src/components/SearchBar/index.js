@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
+import { RecipeContext } from "../../contexts/RecipeContext";
 import { getRecipe } from "../../serviceWorker";
 import {
   Button,
@@ -40,14 +41,13 @@ function SearchBar() {
   const [caloriValue, setCaloriValue] = useState("");
   const [ingredients, setIngredients] = useState("");
 
+  //usecontext
+  const { setRecipes } = useContext(RecipeContext);
+
   const handleClose = () => {
     setOpen(false);
-    console.log(ingredients);
-    getRecipe(healthValues, dietValues, caloriValue, ingredients).then((res) =>
-      console.log(res)
-    );
-    console.log(healthValues, dietValues);
     setIngredients("");
+    console.log("selamaşar");
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -100,21 +100,6 @@ function SearchBar() {
     ]);
   };
 
-  //calorilabels
-  //Songül ekledi
-  /*  const handleChangeCalories = ({ target }) => {
-    const { name } = target;
-    const index = checkedCalories.findIndex((obj) => obj.name === name);
-    setCheckedCalories([
-      ...checkedCalories.slice(0, index),
-      { name, checked: target.checked },
-      ...checkedCalories.slice(index + 1),
-    ]);
-  }; */
-
-  //Songül ekledi
-  /*checkbox */
-
   /*  ingredients input*/
 
   const handleIngredients = (e) => {
@@ -124,7 +109,6 @@ function SearchBar() {
   const handleCaloriValue = ({ target }) => {
     setCaloriValue(target.value);
   };
-  console.log(caloriValue);
   /* get all values and set querystring */
   let healthValues = checkedHealth
     .filter((value) => value.checked)
@@ -138,7 +122,16 @@ function SearchBar() {
     .toLowerCase();
 
   /* get all values and set querystring */
-
+  const getRecipes = () => {
+    if (healthValues !== "") {
+      getRecipe(
+        healthValues,
+        dietValues,
+        caloriValue,
+        ingredients
+      ).then((res) => setRecipes(res.data));
+    }
+  };
   return (
     <div
       style={{
@@ -241,6 +234,7 @@ function SearchBar() {
                 <FormGroup row>
                   {checkboxCaloriesLabels.map((item, i) => (
                     <RadioGroup
+                      key={i}
                       aria-label="gender"
                       name="gender1"
                       value={caloriValue}
@@ -248,7 +242,7 @@ function SearchBar() {
                     >
                       <FormControlLabel
                         value={item.name}
-                        control={<Radio />}
+                        control={<Radio color="primary" />}
                         label={item.name}
                       />
                     </RadioGroup>
@@ -261,7 +255,7 @@ function SearchBar() {
             <Button onClick={handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={handleClose} color="primary">
+            <Button onClick={getRecipes} color="primary">
               Get Recipes
             </Button>
           </DialogActions>

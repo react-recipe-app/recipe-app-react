@@ -24,4 +24,10 @@ export const checkboxCaloriesLabels = [
   { name: "201-300", checked: false },
   { name: "301-400", checked: false },
   { name: "401-500", checked: false },
+  { name: "501-600", checked: false },
+  { name: "601-700", checked: false },
+  { name: "701-800", checked: false },
+  { name: "801-900", checked: false },
+  { name: "901-1000", checked: false },
+  { name: "1000+", checked: false },
 ];

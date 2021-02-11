@@ -3,7 +3,7 @@ import { Typography, Grid } from "@material-ui/core";
 import SearchBar from "../SearchBar";
 function Header() {
   return (
-    <div style={{ height: "100vh", marginTop: "10vh" }}>
+    <div style={{ height: "40vh", marginTop: "10vh" }}>
       <Grid container direction="column" xs={12}>
         <Grid container xs={12}>
           <Grid item xs={2}></Grid>
