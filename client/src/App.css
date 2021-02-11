@@ -1,4 +1,12 @@
 .App {
-  display: flex;
-  flex-direction: column;
+  animation: load 2s ease-in;
+}
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+}
+
+.main {
+  background-color: rgba(245, 212, 79, 0.7);
 }
