@@ -1,11 +1,16 @@
 import axios from "axios";
 
-const appID = "34d234a5";
-const appKey = "2f3cb1d86a0e0fe36f797c0b5a9041e0";
+const appID = "900da95e";
+const appKey = "40698503668e0bb3897581f4766d77f9";
 
-export const getRecipe = () => {
+export const getRecipe = (
+  healthValues,
+  dietValues,
+  caloriValue,
+  ingredients
+) => {
   const data = axios.get(
-    `https://api.edamam.com/search?q=chicken&app_id=${appID}&app_key=${appKey}&from=0&to=3&calories=591-722&health=alcohol-free`
+    `https://api.edamam.com/search?app_id=${appID}&app_key=${appKey}&from=0&to=10&calories=${caloriValue}&Health=${healthValues}&Diet=${dietValues}&q=${ingredients}`
   );
   return data;
 };

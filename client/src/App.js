@@ -3,13 +3,9 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import CheckListMenu from "./components/CheckListMenu";
 import "./App.css";
-import { getRecipe } from "./serviceWorker";
+
 import { Grid, Container } from "@material-ui/core";
-import { useEffect } from "react";
 function App() {
-  useEffect(() => {
-    // getRecipe().then((res) => console.log(res.data));
-  }, []);
   return (
     <div>
       <Container>

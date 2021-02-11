@@ -15,8 +15,11 @@ import {
   Checkbox,
   FormGroup,
   FormControlLabel,
+  Radio,
+  RadioGroup,
 } from "@material-ui/core";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { theme } from "./Theme";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import {
@@ -24,60 +27,31 @@ import {
   checkboxDietLabels,
   checkboxCaloriesLabels,
 } from "./checkboxItems";
-const theme = createMuiTheme({
-  overrides: {
-    MuiOutlinedInput: {
-      root: {
-        backgroundColor: "#e1e6ea",
-        "&:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "#e1e6ea",
-        },
-      },
-      notchedOutline: {
-        borderColor: "#d9502e",
-        border: "3px solid",
-      },
-    },
-    MuiButton: {
-      root: {
-        backgroundColor: "#e1e6ea",
-      },
-      outlinedPrimary: {
-        "&:hover": {
-          backgroundColor: "#d9502e",
-          color: "#e1e6ea",
-        },
-      },
-    },
-    MuiList: {
-      root: {
-        color: "#d9502e",
-      },
-    },
-  },
-  palette: {
-    primary: {
-      main: "#d9502e",
-    },
-    secondary: {
-      main: "#e1e6ea",
-    },
-  },
-});
 
 function SearchBar() {
   const [open, setOpen] = useState(false);
-  const handleClose = () => {
-    setOpen(false);
-  };
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
   const [listItemOpen, setlistItemOpen] = useState({
     healthLabels: false,
     dietLabels: false,
     caloriesLabels: false,
   });
+  const [checkedHealth, setCheckedHealth] = useState(checkboxHealthLabels);
+  const [checkedDiet, setCheckedDiet] = useState(checkboxDietLabels);
+  const [caloriValue, setCaloriValue] = useState("");
+  const [ingredients, setIngredients] = useState("");
+
+  const handleClose = () => {
+    setOpen(false);
+    console.log(ingredients);
+    getRecipe(healthValues, dietValues, caloriValue, ingredients).then((res) =>
+      console.log(res)
+    );
+    console.log(healthValues, dietValues);
+    setIngredients("");
+  };
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const handleClick = (listitem) => {
     switch (listitem) {
@@ -105,11 +79,6 @@ function SearchBar() {
     }
   };
 
-  //******* checkbox */
-  const [checkedHealth, setCheckedHealth] = useState(checkboxHealthLabels);
-  const [checkedDiet, setCheckedDiet] = useState(checkboxDietLabels);
-  const [checkedCalori, setCheckedCalori] = useState(checkboxCaloriesLabels);
-
   // healthlabels
   const handleChangeHealth = ({ target }) => {
     const { name } = target;
@@ -133,46 +102,43 @@ function SearchBar() {
 
   //calorilabels
   //Songül ekledi
-  const handleChangeCalori = ({ target }) => {
+  /*  const handleChangeCalories = ({ target }) => {
     const { name } = target;
-    const index = checkedCalori.findIndex((obj) => obj.name === name);
-    setCheckedCalori([
-      ...checkedCalori.slice(0, index),
+    const index = checkedCalories.findIndex((obj) => obj.name === name);
+    setCheckedCalories([
+      ...checkedCalories.slice(0, index),
       { name, checked: target.checked },
-      ...checkedCalori.slice(index + 1),
+      ...checkedCalories.slice(index + 1),
     ]);
-  };
-
-  let health = checkedHealth
-    .filter((item) => item.checked)
-    .map((item) => item.name);
-  console.log(health);
-  let diet = checkedDiet
-    .filter((item) => item.checked)
-    .map((item) => item.name);
-  let calori = checkedCalori
-    .filter((item) => item.checked)
-    .map((item) => item.name);
-
-  useEffect(() => {
-    let queryString = "";
-    queryString += `{&health=${health}}`;
-    console.log(queryString);
-  }, [health]);
+  }; */
 
   //Songül ekledi
-  //******* checkbox */
-  const [state, setChecked] = useState({
-    checkedA: true,
-    checkedB: false,
-    checkedF: true,
-    checkedG: true,
-  });
-  const handleChange = (event) => {
-    setChecked({ ...state, [event.target.name]: event.target.checked });
-    console.log(state);
+  /*checkbox */
+
+  /*  ingredients input*/
+
+  const handleIngredients = (e) => {
+    setIngredients(e.target.value);
   };
-  console.log(checkedDiet);
+  /*  ingredients input*/
+  const handleCaloriValue = ({ target }) => {
+    setCaloriValue(target.value);
+  };
+  console.log(caloriValue);
+  /* get all values and set querystring */
+  let healthValues = checkedHealth
+    .filter((value) => value.checked)
+    .map((value) => value.name)
+    .join()
+    .toLowerCase();
+  let dietValues = checkedDiet
+    .filter((value) => value.checked)
+    .map((value) => value.name)
+    .join()
+    .toLowerCase();
+
+  /* get all values and set querystring */
+
   return (
     <div
       style={{
@@ -205,6 +171,8 @@ function SearchBar() {
               id="name"
               label="ingredients"
               fullWidth
+              value={ingredients}
+              onChange={handleIngredients}
             />
             <List>
               <ListItem button onClick={() => handleClick("healthLabels")}>
@@ -272,17 +240,18 @@ function SearchBar() {
               >
                 <FormGroup row>
                   {checkboxCaloriesLabels.map((item, i) => (
-                    <FormControlLabel
-                      control={
-                        <Checkbox
-                          checked={checkedCalori.name}
-                          onChange={handleChangeCalori}
-                          name={item.name}
-                          color="primary"
-                        />
-                      }
-                      label={item.name}
-                    />
+                    <RadioGroup
+                      aria-label="gender"
+                      name="gender1"
+                      value={caloriValue}
+                      onChange={handleCaloriValue}
+                    >
+                      <FormControlLabel
+                        value={item.name}
+                        control={<Radio />}
+                        label={item.name}
+                      />
+                    </RadioGroup>
                   ))}
                 </FormGroup>
               </Collapse>
