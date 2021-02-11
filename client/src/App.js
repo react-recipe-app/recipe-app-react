@@ -3,7 +3,9 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import "./App.css";
 import { Grid, Container } from "@material-ui/core";
+
 import { RecipeProvider } from "./contexts/RecipeContext";
+
 function App() {
   return (
     <div className="App">
@@ -21,6 +23,9 @@ function App() {
         <Grid container justify="center" className="main">
           <Grid item xs={12}>
             <Main />
+          </Grid>
+          <Grid item xs={4}>
+            <SearchBar/>
           </Grid>
         </Grid>
       </RecipeProvider>
