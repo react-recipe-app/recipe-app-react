@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import RecipeDetail from "../RecipeDetail";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -37,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   desc: {
     padding: 6,
   },
-  detail: {
+  button: {
     size: "medium",
     color: "#DA512F",
     textTransform: "none",
@@ -68,18 +67,11 @@ function Recipe() {
           <StarIcon />
         </IconButton>
         <span>234</span>
-        <Router>
-          <div style={{ marginLeft: "auto" }}>
-            <Link to="/detail" className={classes.detail}>
-              Detail
-            </Link>
-            <Switch>
-              <Route path="/detail">
-                <RecipeDetail />
-              </Route>
-            </Switch>
-          </div>
-        </Router>
+        <div style={{ marginLeft: "auto" }}>
+          <Button href="#" className={classes.button}>
+            Detail
+          </Button>
+        </div>
       </CardActions>
     </Card>
   );
