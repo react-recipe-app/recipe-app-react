@@ -18,7 +18,7 @@ import {
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
-
+import { checkboxHealthLabels, checkboxDietLabels } from "./checkboxItems";
 const theme = createMuiTheme({
   overrides: {
     MuiOutlinedInput: {
@@ -101,13 +101,40 @@ function SearchBar() {
   };
 
   //******* checkbox */
-  const [checked, setChecked] = useState(true);
-  const [checkboxValue, setCheckBoxValue] = useState([]);
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-    console.log(checked);
+  const [checkedHealth, setCheckedHealth] = useState(checkboxHealthLabels);
+  const [checkedDiet, setCheckedDiet] = useState(checkboxDietLabels);
+
+  // healthlabels
+  const handleChangeHealth = ({ target }) => {
+    const { name } = target;
+    const index = checkedHealth.findIndex((obj) => obj.name === name);
+    setCheckedHealth([
+      ...checkedHealth.slice(0, index),
+      { name, checked: target.checked },
+      ...checkedHealth.slice(index + 1),
+    ]);
+  };
+  const handleChangeDiet = ({ target }) => {
+    const { name } = target;
+    const index = checkedDiet.findIndex((obj) => obj.name === name);
+    setCheckedDiet([
+      ...checkedDiet.slice(0, index),
+      { name, checked: target.checked },
+      ...checkedDiet.slice(index + 1),
+    ]);
   };
   //******* checkbox */
+  const [state, setChecked] = useState({
+    checkedA: true,
+    checkedB: false,
+    checkedF: true,
+    checkedG: true,
+  });
+  const handleChange = (event) => {
+    setChecked({ ...state, [event.target.name]: event.target.checked });
+    console.log(state);
+  };
+  console.log(checkedDiet);
   return (
     <div
       style={{
@@ -152,31 +179,21 @@ function SearchBar() {
                 unmountOnExit
               >
                 <FormGroup row>
-                  <FormControlLabel
-                    control={
-                      <>
+                  {checkboxHealthLabels.map((item, i) => (
+                    <FormControlLabel
+                      key={i}
+                      control={
                         <Checkbox
-                          checked={checked}
-                          onChange={handleChange}
+                          checked={checkedHealth.name}
+                          onChange={handleChangeHealth}
                           inputProps={{ "aria-label": "primary checkbox" }}
                           color="primary"
+                          name={item.name}
                         />
-                        <Checkbox
-                          checked={checked}
-                          onChange={handleChange}
-                          inputProps={{ "aria-label": "primary checkbox" }}
-                          color="primary"
-                        />
-                        <Checkbox
-                          checked={checked}
-                          onChange={handleChange}
-                          inputProps={{ "aria-label": "primary checkbox" }}
-                          color="primary"
-                        />
-                      </>
-                    }
-                    label="Secondary"
-                  />
+                      }
+                      label={item.name}
+                    />
+                  ))}
                 </FormGroup>
               </Collapse>
               <ListItem button onClick={() => handleClick("dietLabels")}>
@@ -189,17 +206,20 @@ function SearchBar() {
                 unmountOnExit
               >
                 <FormGroup row>
-                  <FormControlLabel
-                    control={
-                      <Checkbox
-                        checked={checked}
-                        onChange={handleChange}
-                        inputProps={{ "aria-label": "primary checkbox" }}
-                        color="primary"
-                      />
-                    }
-                    label="Secondary"
-                  />
+                  {checkboxDietLabels.map((item, i) => (
+                    <FormControlLabel
+                      key={i}
+                      control={
+                        <Checkbox
+                          checked={checkedDiet.name}
+                          onChange={handleChangeDiet}
+                          inputProps={{ "aria-label": "primary checkbox" }}
+                          color="primary"
+                        />
+                      }
+                      label={item.name}
+                    />
+                  ))}
                 </FormGroup>
               </Collapse>
               <ListItem button onClick={() => handleClick("caloriesLabels")}>
@@ -215,13 +235,24 @@ function SearchBar() {
                   <FormControlLabel
                     control={
                       <Checkbox
-                        checked={checked}
+                        checked={state.checkedA}
                         onChange={handleChange}
-                        inputProps={{ "aria-label": "primary checkbox" }}
+                        name="checkedA"
                         color="primary"
                       />
                     }
                     label="Secondary"
+                  />
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={state.checkedB}
+                        onChange={handleChange}
+                        name="checkedB"
+                        color="primary"
+                      />
+                    }
+                    label="Banane"
                   />
                 </FormGroup>
               </Collapse>
