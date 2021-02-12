@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import RecipeDetail from "../RecipeDetail";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -12,7 +11,6 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import StarIcon from "@material-ui/icons/Star";
 import { fade } from "@material-ui/core/styles/colorManipulator";
-import { getRecipe } from "../../service";
 
 const useStyles = makeStyles((theme) => ({
   root: {
