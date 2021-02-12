@@ -7,6 +7,9 @@ export const checkboxHealthLabels = [
   { name: "Lupine-Free", checked: false },
   { name: "Mustard-Free", checked: false },
   { name: "No-sugar", checked: false },
+  { name: "Gluten-Free", checked: false },
+  { name: "Keto", checked: false },
+  { name: "Pork-Free", checked: false },
 ];
 
 export const checkboxDietLabels = [
@@ -19,7 +22,8 @@ export const checkboxDietLabels = [
 ];
 
 export const checkboxCaloriesLabels = [
-  { name: "0-100", checked: false },
+  { name: "0-50", checked: false },
+  { name: "51-100", checked: false },
   { name: "101-200", checked: false },
   { name: "201-300", checked: false },
   { name: "301-400", checked: false },
@@ -29,5 +33,6 @@ export const checkboxCaloriesLabels = [
   { name: "701-800", checked: false },
   { name: "801-900", checked: false },
   { name: "901-1000", checked: false },
-  { name: "1000+", checked: false },
+  { name: "1001-1500", checked: false },
+  { name: "1501-2500", checked: false },
 ];
