@@ -10,9 +10,10 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "50px",
   },
   title: {
-    flexGrow: 1,
+    flexGrow: 0,
     fontSize: "30px",
     marginLeft: "20px",
+    width: "400px",
   },
   logo: {
     color: "#4488d1",
@@ -26,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
     background: "#f5d44f",
     fontWeight: "700",
   },
+  toolbar: {
+    display: "flex",
+    justifyContent: "center",
+  },
 }));
 
 function Header() {
@@ -33,18 +38,12 @@ function Header() {
   const preventDefault = (event) => event.preventDefault();
   return (
     <AppBar id="appbar" position="static" className={classes.appBar}>
-      <Toolbar>
+      <Toolbar className={classes.toolbar}>
         <Typography variant="div" className={classes.title}>
           <Link href="#" onClick={preventDefault} className={classes.logo}>
             What Do You Want to Cook ?
           </Link>
         </Typography>
-        <Button variant="outlined" className={classes.btn}>
-          Login
-        </Button>
-        <Button variant="outlined" className={classes.btn}>
-          Sign ın
-        </Button>
       </Toolbar>
     </AppBar>
   );

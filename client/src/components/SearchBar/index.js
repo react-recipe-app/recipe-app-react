@@ -122,14 +122,9 @@ function SearchBar() {
 
   /* get all values and set querystring */
   const getRecipes = () => {
-    if (healthValues !== "") {
-      getRecipe(
-        healthValues,
-        dietValues,
-        caloriValue,
-        ingredients
-      ).then((res) => setRecipes(res.data.hits));
-    }
+    getRecipe(healthValues, dietValues, caloriValue, ingredients).then((res) =>
+      setRecipes(res.data.hits)
+    );
   };
   return (
     <div
@@ -222,7 +217,7 @@ function SearchBar() {
                 </FormGroup>
               </Collapse>
               <ListItem button onClick={() => handleClick("caloriesLabels")}>
-                <ListItemText primary="Calories" />
+                <ListItemText primary="Calories (Default Serving is 100g)" />
                 {listItemOpen.caloriesLabels ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Collapse
