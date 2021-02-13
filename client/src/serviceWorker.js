@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const appID = "900da95e";
-const appKey = "40698503668e0bb3897581f4766d77f9";
-
+const appID = process.env.REACT_APP_API_ID;
+const appKey = process.env.REACT_APP_API_KEY;
+const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;
 export const getRecipe = (
   healthValues,
   dietValues,
@@ -10,12 +10,7 @@ export const getRecipe = (
   ingredients
 ) => {
   const data = axios.get(
-    `https://api.edamam.com/search?app_id=${appID}&app_key=${appKey}&from=0&to=12&calories=${caloriValues}&Health=${healthValues}&Diet=${dietValues}&q=${ingredients}`,
-    {
-      headers: {
-        "content-type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    }
+    `${API_ENDPOINT}app_id=${appID}&app_key=${appKey}&from=0&to=12&calories=${caloriValues}&health=${healthValues}&diet=${dietValues}&q=${ingredients}`
   );
   return data;
 };

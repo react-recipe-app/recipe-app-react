@@ -3,7 +3,6 @@ import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Slide from "@material-ui/core/Slide";
 import IngredientsList from "../IngredientsList";
@@ -33,7 +32,7 @@ function Details({ details }) {
 
   return (
     <>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen}>
         Details
       </Button>
       <Dialog
@@ -53,9 +52,7 @@ function Details({ details }) {
           Cuisine Type : {details.cuisineType}
         </DialogTitle>
         <DialogContent className={classes.dialog}>
-          <DialogContentText id="alert-dialog-slide-description">
-            <IngredientsList ingredients={details.ingredients} />
-          </DialogContentText>
+          <IngredientsList ingredients={details.ingredients} />
         </DialogContent>
         <DialogActions>
           <Button href={details.url} onClick={handleClose} color="primary">

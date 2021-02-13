@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Container>
-        <Grid container xs={12} spacing={4}>
+        <Grid container spacing={4}>
           <Grid item xs={12}>
             <NavBar />
           </Grid>

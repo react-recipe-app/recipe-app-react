@@ -10,7 +10,7 @@ function Main() {
     <div>
       <Grid container>
         {recipes?.map((item, i) => (
-          <Grid item direction="column" justify="center" key={i} xs={4}>
+          <Grid item key={i} xs={4}>
             <Recipe key={i} recipe={item.recipe} />
           </Grid>
         ))}
