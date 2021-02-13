@@ -4,8 +4,8 @@ import SearchBar from "../SearchBar";
 function Header() {
   return (
     <div style={{ height: "40vh", marginTop: "10vh" }}>
-      <Grid container direction="column" xs={12}>
-        <Grid container xs={12}>
+      <Grid container direction="column">
+        <Grid container>
           <Grid item xs={2}></Grid>
           <Grid item xs={8}>
             <Typography
@@ -35,12 +35,12 @@ function Header() {
           </Grid>
           <Grid item xs={2}></Grid>
         </Grid>
-        <Grid container xs={12}>
-          <Grid xs={3}></Grid>
+        <Grid container>
+          <Grid item xs={3}></Grid>
           <Grid item xs={6}>
             <SearchBar />
           </Grid>
-          <Grid xs={3}></Grid>
+          <Grid item xs={3}></Grid>
         </Grid>
       </Grid>
     </div>

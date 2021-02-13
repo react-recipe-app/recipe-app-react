@@ -39,7 +39,7 @@ function Header() {
   return (
     <AppBar id="appbar" position="static" className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
-        <Typography variant="div" className={classes.title}>
+        <Typography variant="body1" className={classes.title}>
           <Link href="#" onClick={preventDefault} className={classes.logo}>
             What Do You Want to Cook ?
           </Link>

@@ -148,10 +148,7 @@ function SearchBar() {
         >
           <DialogTitle id="form-dialog-title">Select What You Want</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              To subscribe to this website, please enter your email address
-              here. We will send updates occasionally.
-            </DialogContentText>
+            <DialogContentText></DialogContentText>
             <TextField
               autoFocus
               margin="dense"
